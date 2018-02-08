@@ -39,7 +39,7 @@ get_external_ip() {
 }
 
 get_full_date() {
-	export DATE=`date +"%Y-%m-%d %H:%M:%S"`
+	export DATE=`date +"%d-%m-%Y %H:%M:%S"`
 }
 
 get_hostname() {
