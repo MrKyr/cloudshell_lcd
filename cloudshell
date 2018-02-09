@@ -104,14 +104,6 @@ get_cpu_temperature() {
 	fi
 }
 
-get_samba_connections() {
-	if [ ! -f /usr/bin/smbstatus ]; then
-		export SAMBA_CONNECTIONS=0
-	else
-		export SAMBA_CONNECTIONS=`smbstatus -b | grep -c ipv`
-	fi
-}
-
 get_ssh_connections() {
         export SSH_CONNECTIONS=$(/usr/bin/who | wc -l)
 }
