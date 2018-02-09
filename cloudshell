@@ -23,6 +23,9 @@ export NETIF="eth0"
 # SATA HDD mount
 export SATA="/dev/sda1"
 
+# Mem Card mount
+export MEMCARD="/dev/mmcblk1p1"
+
 # Screen refresh in seconds
 export REFRESH="3"
 
@@ -67,6 +70,14 @@ get_disk_info() {
 	export DISK_FREE=`echo $t | awk '{printf $4}'`
 	export DISK_USED_PCT=`echo $t | awk '{printf $5}'`
 }
+
+get_memcard_info() {
+        t=`df -h | grep $MEMCARD`
+	export MEMCARD_SIZE=`echo $t | awk '{printf $2}'`
+	export MEMCARD_USED=`echo $t | awk '{printf $3}'`
+	export MEMCARD_FREE=`echo $t | awk '{printf $4}'`
+	export MEMCARD_USED_PCT=`echo $t | awk '{printf $5}'`
+}	
 
 get_memory_info() {
 	# in Mbytes
@@ -145,7 +156,8 @@ while true; do
 	get_internal_ip
 	get_hostname
 	get_disk_info
-	get_full_date
+        get_memcard_info
+        get_full_date
 	get_net_tx_rx_realtime
 	get_memory_info
 	get_cpu_usage
@@ -172,6 +184,8 @@ while true; do
 	echo -e "TX: $CBLUE$NET_TX MB/s$COFF RX: $CBLUE$NET_RX MB/s$COFF" > $oc
 	# Line Disk Space
 	echo -e "Disk Used: $CBLUE$DISK_USED$COFF ($CBLUE$DISK_USED_PCT$COFF)  Free: $CBLUE$DISK_FREE$COFF" > $oc
+	# Line Memcard Space
+	echo -e "Mem Card Used: $CBLUE$MEMCARD_USED$COFF ($CBLUE$MEMCARD_USED_PCT$COFF)  Free: $CBLUE$MEMCARD_FREE$COFF" > $oc
     # Line SSH
     echo -e "SSH Connections: $CBLUE$SSH_CONNECTIONS$COFF" > $oc
     # line NFS
