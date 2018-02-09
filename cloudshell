@@ -159,7 +159,7 @@ while true; do
 	get_cpu_usage
 	get_cpu_temperature
 	get_ssh_connections
-    get_process_count
+        get_process_count
     	
 	# clear the screen every loop
 	# we only wipe the screen when we are ready to write data to it
@@ -183,8 +183,6 @@ while true; do
 	echo -e "Mem Card Used: $CBLUE$MEMCARD_USED$COFF ($CBLUE$MEMCARD_USED_PCT$COFF)  Free: $CBLUE$MEMCARD_FREE$COFF" > $oc
     # Line SSH
     echo -e "SSH Connections: $CBLUE$SSH_CONNECTIONS$COFF" > $oc
-    # line NFS
-    echo -e "NFS Connections: $CBLUE$NFS_CONNECTIONS$COFF" > $oc
 	# line Processes
 	echo -e "Processes Running: $CBLUE$PROCESS_COUNT$COFF" > $oc
 	# Custom Message
