@@ -101,6 +101,10 @@ get_samba_connections() {
 	fi
 }
 
+get_ssh_connections() {
+        export SSH_CONNECTIONS=$(/usr/bin/who | wc -l)
+}
+
 get_nfs_connections() { 
 	export NFS_CONNECTIONS=`netstat -an | grep 2049 | grep -c ESTA`
 }
@@ -146,7 +150,7 @@ while true; do
 	get_memory_info
 	get_cpu_usage
 	get_cpu_temperature
-	get_samba_connections
+	get_ssh_connections
 	get_nfs_connections
     get_process_count
     	
@@ -168,8 +172,8 @@ while true; do
 	echo -e "TX: $CBLUE$NET_TX MB/s$COFF RX: $CBLUE$NET_RX MB/s$COFF" > $oc
 	# Line Disk Space
 	echo -e "Disk Used: $CBLUE$DISK_USED$COFF ($CBLUE$DISK_USED_PCT$COFF)  Free: $CBLUE$DISK_FREE$COFF" > $oc
-    # Line Samba
-    echo -e "Samba Clients: $CBLUE$SAMBA_CONNECTIONS$COFF" > $oc
+    # Line SSH
+    echo -e "SSH Connections: $CBLUE$SSH_CONNECTIONS$COFF" > $oc
     # line NFS
     echo -e "NFS Connections: $CBLUE$NFS_CONNECTIONS$COFF" > $oc
 	# line Processes
