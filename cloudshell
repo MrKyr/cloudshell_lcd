@@ -81,11 +81,8 @@ get_memcard_info() {
 
 get_memory_info() {
 	# in Mbytes
-#	export MEM_FREE=$[`cat /proc/meminfo | grep MemFree | awk '{print $2'}` / 1024]
         export MEM_FREE=$(/usr/bin/free -h |grep Mem: |awk '{print $7}')
-#	export MEM_TOTAL=$[`cat /proc/meminfo | grep MemTotal | awk '{print $2'}` / 1024]
         export MEM_TOTAL=$(/usr/bin/free -h |grep Mem: |awk '{print $2}')
-#	export MEM_USED=$[$MEM_TOTAL - $MEM_FREE]
         export MEM_USED=$(/usr/bin/free -h |grep Mem: |awk '{print $3}')
 }
 
@@ -114,10 +111,6 @@ get_samba_connections() {
 
 get_ssh_connections() {
         export SSH_CONNECTIONS=$(/usr/bin/who | wc -l)
-}
-
-get_nfs_connections() { 
-	export NFS_CONNECTIONS=`netstat -an | grep 2049 | grep -c ESTA`
 }
 
 get_process_count() { 
@@ -163,7 +156,6 @@ while true; do
 	get_cpu_usage
 	get_cpu_temperature
 	get_ssh_connections
-	get_nfs_connections
     get_process_count
     	
 	# clear the screen every loop
