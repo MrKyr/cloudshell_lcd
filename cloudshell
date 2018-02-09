@@ -178,7 +178,7 @@ while true; do
 	# line Processes
 	echo -e "Processes Running: $CBLUE$PROCESS_COUNT$COFF" > $oc
 	# Custom Message
-	 echo -e "Message of the day: $CBLUE$MESSAGE$COFF" > $oc
+	 echo -e "Message of the day: $CRED$MESSAGE$COFF" > $oc
 
 	# sleep
 	sleep $REFRESH
