@@ -159,7 +159,7 @@ while true; do
 
 	# format the data on screen
 	echo "" > $oc
-	echo -e "$CBLUE $HOSTNAME $COFF: $DATE" > $oc
+	echo -e "$CBLUE$HOSTNAME $COFF: $DATE" > $oc
     echo "" > $oc
 	# line CPU Usage
 	echo -e "CPU Usage: $CBLUE$CPU_USAGE%$COFF   CPU Temp: $CBLUE$CPU_TEMP$COFF" > $oc
