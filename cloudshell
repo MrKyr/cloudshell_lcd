@@ -12,7 +12,7 @@
 # console font
 # More fonts on: /usr/share/consolefonts
 export TERM="linux"
-export CONSOLE_FONT="Lat15-Fixed18"
+# export CONSOLE_FONT="Lat15-Fixed18"
 
 # Output Console (ttyX)
 export OUTPUT_CONSOLE="1"
@@ -121,7 +121,7 @@ CBLUE=$(tput setaf 6)
 oc="/dev/tty$OUTPUT_CONSOLE"
 
 # font setup
-setfont $CONSOLE_FONT > $oc
+#setfont $CONSOLE_FONT > $oc
 
 # Ensure that we are in the right TTY
 chvt $OUTPUT_CONSOLE
